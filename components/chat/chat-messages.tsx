@@ -57,7 +57,6 @@ export const ChatMessages = ({
       paramKey,
       paramValue,
     });
-
   useChatSocket({ queryKey, addKey, updateKey });
   useChatScroll({
     chatRef,
@@ -67,16 +66,16 @@ export const ChatMessages = ({
     count: data?.pages?.[0]?.items?.length ?? 0,
   });
 
-  if (status === "loading") {
-    return (
-      <div className='flex flex-col flex-1 justify-center items-center'>
-        <Loader2 className='h-7 w-7 text-zinc-500 animate-spin my-4' />
-        <p className='text-xs text-zinc-500 dark:text-zinc-400'>
-          Loading messages...
-        </p>
-      </div>
-    );
-  }
+  // if (status === "loading") {
+  //   return (
+  //     <div className='flex flex-col flex-1 justify-center items-center'>
+  //       <Loader2 className='h-7 w-7 text-zinc-500 animate-spin my-4' />
+  //       <p className='text-xs text-zinc-500 dark:text-zinc-400'>
+  //         Loading messages...
+  //       </p>
+  //     </div>
+  //   );
+  // }
 
   if (status === "error") {
     return (
@@ -93,7 +92,6 @@ export const ChatMessages = ({
     <div ref={chatRef} className='flex-1 flex flex-col py-4 overflow-y-auto'>
       {!hasNextPage && <div className='flex-1' />}
       {!hasNextPage && <ChatWelcome type={type} name={name} />}
-
       {hasNextPage && (
         <div className='flex justify-center'>
           {isFetchingNextPage ? (
@@ -101,15 +99,13 @@ export const ChatMessages = ({
           ) : (
             <button
               onClick={() => fetchNextPage()}
-              className='text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 text-xs my-4
-            dark:hover:text-zinc-300 transition'
+              className='text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 text-xs my-4 dark:hover:text-zinc-300 transition'
             >
               Load previous messages
             </button>
           )}
         </div>
       )}
-
       <div className='flex flex-col-reverse mt-auto'>
         {data?.pages?.map((group, i) => (
           <Fragment key={i}>
