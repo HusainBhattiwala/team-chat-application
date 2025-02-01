@@ -1,4 +1,4 @@
-import { NextApiRequest } from "next";
+import type { NextApiRequest } from "next";
 import { getAuth } from "@clerk/nextjs/server";
 
 import { db } from "@/lib/db";

@@ -21,8 +21,12 @@ export const NavigationItem = ({ id, imageUrl, name }: NavigationItemProps) => {
   };
 
   return (
-    <ActionTooltip side='right' align='center' label={name}>
-      <button onClick={onClick} className='group relative flex items-center'>
+    <ActionTooltip side="right" align="center" label={name}>
+      <button
+        type="button"
+        onClick={onClick}
+        className="group relative flex items-center"
+      >
         <div
           className={cn(
             "absolute left-0 bg-primary rounded-r-full transition-all w-[4px]",
@@ -37,7 +41,7 @@ export const NavigationItem = ({ id, imageUrl, name }: NavigationItemProps) => {
               "bg-primary/10 text-primary rounded-[16px]"
           )}
         >
-          <Image fill src={imageUrl} alt='Channel' />
+          <Image fill src={imageUrl} alt="Channel" />
         </div>
       </button>
     </ActionTooltip>

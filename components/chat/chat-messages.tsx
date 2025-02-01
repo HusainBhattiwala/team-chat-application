@@ -1,8 +1,8 @@
 "use client";
 
-import { Fragment, useRef, ElementRef } from "react";
+import { Fragment, useRef, type ElementRef } from "react";
 import { format } from "date-fns";
-import { Member, Message, Profile } from "@prisma/client";
+import type { Member, Message, Profile } from "@prisma/client";
 import { Loader2, ServerCrash } from "lucide-react";
 
 import { useChatQuery } from "@/hooks/use-chat-query";
@@ -68,9 +68,9 @@ export const ChatMessages = ({
 
   if (status === "pending") {
     return (
-      <div className='flex flex-col flex-1 justify-center items-center'>
-        <Loader2 className='h-7 w-7 text-zinc-500 animate-spin my-4' />
-        <p className='text-xs text-zinc-500 dark:text-zinc-400'>
+      <div className="flex flex-col flex-1 justify-center items-center">
+        <Loader2 className="size-7 text-zinc-500 animate-spin my-4" />
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">
           Loading messages...
         </p>
       </div>
@@ -79,9 +79,9 @@ export const ChatMessages = ({
 
   if (status === "error") {
     return (
-      <div className='flex flex-col flex-1 justify-center items-center'>
-        <ServerCrash className='h-7 w-7 text-zinc-500 my-4' />
-        <p className='text-xs text-zinc-500 dark:text-zinc-400'>
+      <div className="flex flex-col flex-1 justify-center items-center">
+        <ServerCrash className="size-7 text-zinc-500 my-4" />
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">
           Something went wrong!
         </p>
       </div>
@@ -89,26 +89,27 @@ export const ChatMessages = ({
   }
 
   return (
-    <div ref={chatRef} className='flex-1 flex flex-col py-4 overflow-y-auto'>
-      {!hasNextPage && <div className='flex-1' />}
+    <div ref={chatRef} className="flex-1 flex flex-col py-4 overflow-y-auto">
+      {!hasNextPage && <div className="flex-1" />}
       {!hasNextPage && <ChatWelcome type={type} name={name} />}
       {hasNextPage && (
-        <div className='flex justify-center'>
+        <div className="flex justify-center">
           {isFetchingNextPage ? (
-            <Loader2 className='h-6 w-6 text-zinc-500 animate-spin my-4' />
+            <Loader2 className="size-6 text-zinc-500 animate-spin my-4" />
           ) : (
             <button
+              type="button"
               onClick={() => fetchNextPage()}
-              className='text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 text-xs my-4 dark:hover:text-zinc-300 transition'
+              className="text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 text-xs my-4 dark:hover:text-zinc-300 transition"
             >
               Load previous messages
             </button>
           )}
         </div>
       )}
-      <div className='flex flex-col-reverse mt-auto'>
+      <div className="flex flex-col-reverse mt-auto">
         {data?.pages?.map((group, i) => (
-          <Fragment key={i}>
+          <Fragment key={group.id}>
             {group.items.map((message: MessageWithMemberWithProfile) => (
               <ChatItem
                 key={message.id}

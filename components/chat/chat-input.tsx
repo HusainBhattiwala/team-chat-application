@@ -64,9 +64,9 @@ export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
                   <button
                     type='button'
                     onClick={() => onOpen("messageFile", { apiUrl, query })}
-                    className='absolute top-7 left-8 h-[24px] w-[24px] bg-zinc-500
-                             dark:bg-zinc-400 hover:bg-zinc-600 dark:hover:bg-zinc-300
-                              transition rounded-full p-1 flex items-center justify-center'
+                    className='absolute top-7 left-8 size-[24px] bg-zinc-500 dark:bg-zinc-400
+                             hover:bg-zinc-600 dark:hover:bg-zinc-300 transition
+                              rounded-full p-1 flex items-center justify-center'
                   >
                     <Plus className='text-white dark:text-[#313338]' />
                   </button>
@@ -76,7 +76,7 @@ export const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
                      border-0 focus-visible:ring-0 focus-visible:ring-offset-0 text-zinc-600
                      dark:text-zinc-200'
                     placeholder={`Message ${
-                      type === "conversation" ? name : "#" + name
+                      type === "conversation" ? name : `#${name}`
                     }`}
                     {...field}
                   />

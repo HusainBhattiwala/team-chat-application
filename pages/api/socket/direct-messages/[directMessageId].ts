@@ -1,7 +1,7 @@
-import { NextApiRequest } from "next";
+import type { NextApiRequest } from "next";
 import { MemberRole } from "@prisma/client";
 
-import { NextApiResponseServerIo } from "@/types";
+import type { NextApiResponseServerIo } from "@/types";
 import { currentProfilePages } from "@/lib/current-profile-pages";
 import { db } from "@/lib/db";
 

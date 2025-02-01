@@ -1,8 +1,8 @@
-import { Server as NetServer } from "http";
-import { NextApiRequest } from "next";
+import type { Server as NetServer } from "node:http";
+import type { NextApiRequest } from "next";
 import { Server as ServerIO } from "socket.io";
 
-import { NextApiResponseServerIo } from "@/types";
+import type { NextApiResponseServerIo } from "@/types";
 
 export const config = {
   api: {
