@@ -1,7 +1,7 @@
-import { Server as NetServer, Socket } from "net";
-import { NextApiResponse } from "next";
-import { Server as SocketIOServer } from "socket.io";
-import { Server, Profile, Member } from "@prisma/client";
+import type { Server as NetServer, Socket } from "node:net";
+import type { NextApiResponse } from "next";
+import type { Server as SocketIOServer } from "socket.io";
+import type { Server, Profile, Member } from "@prisma/client";
 
 export type ServerWithMembersWithProfiles = Server & {
   members: (Member & { profile: Profile })[];

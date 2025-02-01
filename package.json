@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && biome lint --write --unsafe",
+    "lint:fix": "next lint --fix && biome lint --write --unsafe",
+    "format": "biome format --write",
     "postinstall": "prisma generate"
   },
   "dependencies": {
@@ -55,13 +57,17 @@
     "zustand": "^4.4.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/uuid": "^9.0.5",
     "autoprefixer": "^10",
-    "eslint": "^8",
-    "eslint-config-next": "13.5.4",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-tailwindcss": "^3.17.5",
     "postcss": "^8",
     "prisma": "^5.4.2",
     "tailwindcss": "^3",
